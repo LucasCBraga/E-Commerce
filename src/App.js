@@ -40,6 +40,20 @@ function App() {
   return (
     <>
       <Header />
+
+      <section>
+        {products.map((item)=>(
+          <article key={item.id}>
+            <img src={item.mainImage} alt=""/>
+            <ul>
+              <img src={item.thumbnail} alt=""/>
+            </ul>
+
+          </article>
+        ))}
+
+      </section>
+
     </>
   );
 }
