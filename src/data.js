@@ -16,7 +16,7 @@ export const data = [
     },
     {
         id: 4,
-        main4mage: "./images/image-product-4.jpg",
+        mainImage: "./images/image-product-4.jpg",
         thumbnail: "./images/image-product-4-thumbnail.jpg"
     },
 ]
