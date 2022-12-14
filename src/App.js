@@ -3,6 +3,8 @@ import { data } from "./data"
 import logo from "./images/logo.svg"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import avatar from "./images/image-avatar.png"
+import minus from "./images/icon-minus.svg"
+import plus from "./images/icon-plus.svg"
 
 function Header() {
   return (
@@ -37,6 +39,7 @@ function Header() {
 function App() {
   const [products] = useState(data)
   const [value, setValue] = useState(0)
+  const [amount, setAmount] = useState(0)
 
   const { mainImage } = products[value]
 
@@ -66,22 +69,30 @@ function App() {
           <h1>Fall Limited Edition Sneakers</h1>
           <p>These low-profile sneakers are your perfect casual wear companion. Featuring a
             durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-            <div>
+          <div>
             <ul>
               <li>$125.00</li>
               <li>50%</li>
             </ul>
 
             <p><s>$250.00</s></p>
-            </div>
-            <div>
-                <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <img src={minus} alt=""></img>              
+              </li>
+              <li>{amount}</li>
+              <li>
+                <img src={plus} alt="" />
+                </li>
+            </ul>
 
-            </div>
+            <button>
+            <AiOutlineShoppingCart /> Add to cart
+            </button>
+
+          </div>
         </article>
       </section>
     </>
