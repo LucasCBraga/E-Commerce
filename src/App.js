@@ -43,6 +43,10 @@ function App() {
 
   const { mainImage } = products[value]
 
+  const handleMinus = () => { 
+    setAmount(amount - 1)
+      if (amount <= 0 ) setAmount(0)
+  };
 
   return (
     <>
@@ -64,7 +68,7 @@ function App() {
           </ul>
         </article>
 
-        <article>
+        <article className="px-8 pb-10 ">
           <h2 className="bg-slate-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-small font-bold inline-block rounded shadow mb-10">Sneaker Company</h2>
           <h1 className="text-slate-900 mb-10 font-bold text-3xl lg:text-4xl ">Fall Limited Edition Sneakers</h1>
           <p className="text-slate-600 mb-10 leading-relaxed">These low-profile sneakers are your perfect casual wear companion. Featuring a
@@ -79,11 +83,11 @@ function App() {
           </div>
           <div className="mt-10">
             <ul className="flex items-center justify-between bg-slate-100 py-2 px-4 rounded shadow">
-              <li>
+              <li onClick={handleMinus} className="cursor-pointer">
                 <img src={minus} alt=""></img>
               </li>
               <li>{amount}</li>
-              <li>
+              <li onClick={() => setAmount(amount + 1)} className="cursor-pointer">
                 <img src={plus} alt="" />
               </li>
             </ul>
