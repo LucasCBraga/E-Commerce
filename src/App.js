@@ -38,6 +38,16 @@ function Header() {
   )
 }
 
+function LightBox() {
+  return (
+    <>
+    <article className="bg-black bg-opacity-75 absolute top-0 left-0 right-0 bottom-0 z-50">
+      <h2 className="text-8xl font-bold">LightBox</h2> 
+    </article>
+    </>
+  )
+}
+
 function App() {
   const [products] = useState(data)
   const [value, setValue] = useState(0)
@@ -70,6 +80,7 @@ function App() {
   return (
     <>
       <Header />
+      <LightBox products={products} />
 
       <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:place-items-center lg:py-20">
         <article>
