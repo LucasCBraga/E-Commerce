@@ -71,9 +71,9 @@ function App() {
     <>
       <Header />
 
-      <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:mt-10">
+      <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:place-items-center lg:py-20">
         <article>
-          <div className="lg:hidden">
+          <div>
             {products.map((item, index) => (
               <div 
               key={index}
@@ -116,7 +116,7 @@ function App() {
           <h1 className="text-slate-900 mb-10 font-bold text-3xl lg:text-4xl ">Fall Limited Edition Sneakers</h1>
           <p className="text-slate-600 mb-10 leading-relaxed">These low-profile sneakers are your perfect casual wear companion. Featuring a
             durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-          <div className="flex flex-wrap items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between lg:flex-col lg:items-start lg:gap-2">
             <ul className="flex items-center gap-5">
               <li className="text-slate-900 font-bold text-xl ">$125.00</li>
               <li className="bg-orange-100 py-1 px-2 text-orange-400 tracking-wide text-small font-bold inline-block rounded shadow">50%</li>
@@ -124,8 +124,8 @@ function App() {
 
             <p className="text-slate-600 text-sm"><s>$250.00</s></p>
           </div>
-          <div className="mt-10">
-            <ul className="flex items-center justify-between bg-slate-100 py-2 px-4 rounded shadow">
+          <div className="mt-10 lg:flex items-center justify-between gap-2">
+            <ul className="flex items-center justify-between bg-slate-100 py-2 px-4 rounded shadow lg:flex-1">
               <li onClick={handleMinus} className="cursor-pointer">
                 <img src={minus} alt=""></img>
               </li>
@@ -134,8 +134,9 @@ function App() {
                 <img src={plus} alt="" />
               </li>
             </ul>
-            <div>    
-            <button className="flex items-center justify-center gap-4 bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full" >
+            <div className="lg:flex-1">    
+            <button className="flex items-center justify-center gap-4 bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full lg:mt-0 hover:bg-orange-600
+            transition-all duration-200" >
               <AiOutlineShoppingCart /> Add to cart
             </button>
           </div>
