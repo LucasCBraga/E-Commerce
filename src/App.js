@@ -28,22 +28,52 @@ function Header() {
         <ul className="flex items-center justify-start gap-4 ">
           <li>
             <button>
-            <AiOutlineShoppingCart className="text-2xl text-slate-600" />
-          </button></li>
+              <AiOutlineShoppingCart className="text-2xl text-slate-600" />
+            </button></li>
           <li><img src={avatar} alt="" className="w-12"></img></li>
         </ul>
       </div>
     </header>
-
   )
 }
 
-function LightBox() {
+function LightBox({ products, slideIndex, nextSlide, previousSlide }) {
   return (
     <>
-    <article className="bg-black bg-opacity-75 absolute top-0 left-0 right-0 bottom-0 z-50">
-      <h2 className="text-8xl font-bold">LightBox</h2> 
-    </article>
+      <article className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50">
+        <div className="flex items-center justify-center h-screen">
+          {products.map((item, index) => (
+            <div
+              key={index}
+              className={slideIndex === index + 1 ? "relative" : "hidden"}
+            >
+              <img src={item.mainImage}
+                alt=""
+                className="big-image lg:w-full lg:rounded-2xl"
+            
+              />
+              <ul>
+                <li>
+                  <button
+                    onClick={previousSlide}
+                    className="bg-white rounded-full p-5 shadow absolute left-4 top-1/2 -translate-y-1/2"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={nextSlide}
+                    className="bg-white rounded-full p-5 shadow absolute right-4 top-1/2 -translate-y-1/2"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      </article>
     </>
   )
 }
@@ -72,43 +102,47 @@ function App() {
     }
   }
 
-  const handleMinus = () => { 
+  const handleMinus = () => {
     setAmount(amount - 1)
-      if (amount <= 0 ) setAmount(0)
+    if (amount <= 0) setAmount(0)
   };
 
   return (
     <>
       <Header />
-      <LightBox products={products} />
+      <LightBox products={products}
+        slideIndex={slideIndex}
+        nextSlide={nextSlide}
+        previousSlide={previousSlide}
+      />
 
       <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:place-items-center lg:py-20">
         <article>
           <div>
             {products.map((item, index) => (
-              <div 
-              key={index}
-              className={slideIndex === index + 1 ? "relative" : "hidden"}
+              <div
+                key={index}
+                className={slideIndex === index + 1 ? "relative" : "hidden"}
               >
-              <img src={item.mainImage} 
-              alt="" 
-              className="w-full lg:rounded-2xl cursor-pointer"
-              />
-              <ul className="lg:hidden">
-                <li>
-                  <button 
-                  onClick={previousSlide}
-                  className="bg-white rounded-full p-5 shadow absolute left-4 top-1/2 -translate-y-1/2"
-                  >
-                  <FaChevronLeft /></button></li>
-                <li>
-                  <button onClick={nextSlide} className="bg-white rounded-full p-5 shadow absolute right-4 top-1/2 -translate-y-1/2" >
-                  <FaChevronRight /></button></li>
-                   </ul>
+                <img src={item.mainImage}
+                  alt=""
+                  className="w-full lg:rounded-2xl cursor-pointer"
+                />
+                <ul className="lg:hidden">
+                  <li>
+                    <button
+                      onClick={previousSlide}
+                      className="bg-white rounded-full p-5 shadow absolute left-4 top-1/2 -translate-y-1/2"
+                    >
+                      <FaChevronLeft /></button></li>
+                  <li>
+                    <button onClick={nextSlide} className="bg-white rounded-full p-5 shadow absolute right-4 top-1/2 -translate-y-1/2" >
+                      <FaChevronRight /></button></li>
+                </ul>
               </div>
             ))}
-           </div>
-            
+          </div>
+
 
           <ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap mt-5">
             {products.map((item, index) => (
@@ -145,12 +179,12 @@ function App() {
                 <img src={plus} alt="" />
               </li>
             </ul>
-            <div className="lg:flex-1">    
-            <button className="flex items-center justify-center gap-4 bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full lg:mt-0 hover:bg-orange-600
+            <div className="lg:flex-1">
+              <button className="flex items-center justify-center gap-4 bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full lg:mt-0 hover:bg-orange-600
             transition-all duration-200" >
-              <AiOutlineShoppingCart /> Add to cart
-            </button>
-          </div>
+                <AiOutlineShoppingCart /> Add to cart
+              </button>
+            </div>
           </div>
         </article>
       </section>
