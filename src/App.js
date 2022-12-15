@@ -2,6 +2,7 @@ import { useState } from "react"
 import { data } from "./data"
 import logo from "./images/logo.svg"
 import { AiOutlineShoppingCart } from "react-icons/ai"
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import avatar from "./images/image-avatar.png"
 import minus from "./images/icon-minus.svg"
 import plus from "./images/icon-plus.svg"
@@ -13,7 +14,7 @@ function Header() {
       <div className="flex items-center justify-start gap-4 ">
         <img src={logo} alt=""></img>
 
-        <nav>
+        <nav className="hidden">
           <ul className="flex items-center justify-start gap-4 ">
             <li>Collections</li>
             <li>Men</li>
@@ -25,8 +26,9 @@ function Header() {
       </div>
       <div>
         <ul className="flex items-center justify-start gap-4 ">
-          <li><button>
-            <AiOutlineShoppingCart />
+          <li>
+            <button>
+            <AiOutlineShoppingCart className="text-2xl text-slate-600" />
           </button></li>
           <li><img src={avatar} alt="" className="w-12"></img></li>
         </ul>
@@ -52,11 +54,17 @@ function App() {
     <>
       <Header />
 
-      <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+      <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:mt-10">
         <article>
-          <img src={mainImage} alt="" className="w-full rounded-2xl" />
+          <div>
+          <img src={mainImage} alt="" className="w-full lg:rounded-2xl" />
+          <ul>
+            <li><button><FaChevronLeft /></button></li>
+            <li><button><FaChevronRight /></button></li>
+          </ul>
+          </div>
 
-          <ul className="flex items-center justify-start gap-5 flex-wrap mt-5">
+          <ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap mt-5">
             {products.map((item, index) => (
               <li key={item.id} onClick={() => setValue(index)} className={
                 `${index === value && "border-2 border-orange-400 opacity-80"} 
