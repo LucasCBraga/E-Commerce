@@ -56,11 +56,13 @@ function App() {
 
       <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:mt-10">
         <article>
-          <div>
+          <div className="relative">
           <img src={mainImage} alt="" className="w-full lg:rounded-2xl" />
           <ul>
-            <li><button><FaChevronLeft /></button></li>
-            <li><button><FaChevronRight /></button></li>
+            <li><button className="bg-white rounded-full p-5 shadow absolute left-4 top-1/2 -translate-y-1/2">
+              <FaChevronLeft /></button></li>
+            <li><button  className="bg-white rounded-full p-5 shadow absolute right-4 top-1/2 -translate-y-1/2" >
+              <FaChevronRight /></button></li>
           </ul>
           </div>
 
