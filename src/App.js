@@ -6,6 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import avatar from "./images/image-avatar.png"
 import minus from "./images/icon-minus.svg"
 import plus from "./images/icon-plus.svg"
+import close from "./images/icon-close.svg"
 
 function Header() {
   return (
@@ -37,10 +38,13 @@ function Header() {
   )
 }
 
-function LightBox({ products, slideIndex, nextSlide, previousSlide }) {
+function LightBox({ products, slideIndex, nextSlide, previousSlide, setShowLightBox }) {
   return (
     <>
       <article className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50">
+        <button onClick={() => setShowLightBox(false)}>
+        <img src={close} alt="" className="w-10 absolute top-10 right-10 " />
+        </button>
         <div className="flex items-center justify-center h-screen">
           {products.map((item, index) => (
             <div
@@ -50,7 +54,7 @@ function LightBox({ products, slideIndex, nextSlide, previousSlide }) {
               <img src={item.mainImage}
                 alt=""
                 className="big-image lg:w-full lg:rounded-2xl"
-            
+
               />
               <ul>
                 <li>
@@ -83,8 +87,9 @@ function App() {
   const [value, setValue] = useState(0)
   const [amount, setAmount] = useState(0)
   const [slideIndex, setSlideIndex] = useState(1)
+  const [showLightbox, setShowLightbox] = useState(false)
 
-  const { mainImage } = products[value]
+
 
   const nextSlide = () => {
     if (slideIndex !== products.length) {
@@ -110,11 +115,12 @@ function App() {
   return (
     <>
       <Header />
-      <LightBox products={products}
+      {showLightbox && <LightBox products={products}
         slideIndex={slideIndex}
         nextSlide={nextSlide}
         previousSlide={previousSlide}
-      />
+        setShowLightBox={setShowLightbox}
+      />}
 
       <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:place-items-center lg:py-20">
         <article>
@@ -127,6 +133,7 @@ function App() {
                 <img src={item.mainImage}
                   alt=""
                   className="w-full lg:rounded-2xl cursor-pointer"
+                  onClick={() => setShowLightbox(true)}
                 />
                 <ul className="lg:hidden">
                   <li>
