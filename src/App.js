@@ -43,7 +43,7 @@ function LightBox({ products, slideIndex, nextSlide, previousSlide, setShowLight
     <>
       <article className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50">
         <button onClick={() => setShowLightBox(false)}>
-        <img src={close} alt="" className="w-10 absolute top-10 right-10 " />
+          <img src={close} alt="" className="w-10 absolute top-10 right-10 " />
         </button>
         <div className="flex items-center justify-center h-screen">
           {products.map((item, index) => (
@@ -89,6 +89,8 @@ function App() {
   const [slideIndex, setSlideIndex] = useState(1)
   const [showLightbox, setShowLightbox] = useState(false)
 
+  const { mainImage } = products[value]
+
 
 
   const nextSlide = () => {
@@ -124,7 +126,7 @@ function App() {
 
       <section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:place-items-center lg:py-20">
         <article>
-          <div>
+          <div className="lg:hidden">
             {products.map((item, index) => (
               <div
                 key={index}
@@ -149,6 +151,15 @@ function App() {
               </div>
             ))}
           </div>
+
+          <div className="hidden lg:block">
+            <img src={mainImage}
+              alt=""
+              className="w-full lg:rounded-2xl cursor-pointer"
+              onClick={() => setShowLightbox(true)}
+            />
+          </div>
+
 
 
           <ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap mt-5">
