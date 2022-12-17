@@ -151,7 +151,6 @@ function App() {
               </div>
             ))}
           </div>
-
           <div className="hidden lg:block">
             <img src={mainImage}
               alt=""
@@ -159,9 +158,6 @@ function App() {
               onClick={() => setShowLightbox(true)}
             />
           </div>
-
-
-
           <ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap mt-5">
             {products.map((item, index) => (
               <li key={item.id} onClick={() => setValue(index)} className={
@@ -173,7 +169,6 @@ function App() {
             ))}
           </ul>
         </article>
-
         <article className="px-8 pb-10 ">
           <h2 className="bg-slate-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-small font-bold inline-block rounded shadow mb-10">Sneaker Company</h2>
           <h1 className="text-slate-900 mb-10 font-bold text-3xl lg:text-4xl ">Fall Limited Edition Sneakers</h1>
@@ -184,7 +179,6 @@ function App() {
               <li className="text-slate-900 font-bold text-xl ">$125.00</li>
               <li className="bg-orange-100 py-1 px-2 text-orange-400 tracking-wide text-small font-bold inline-block rounded shadow">50%</li>
             </ul>
-
             <p className="text-slate-600 text-sm"><s>$250.00</s></p>
           </div>
           <div className="mt-10 lg:flex items-center justify-between gap-2">
@@ -199,7 +193,7 @@ function App() {
             </ul>
             <div className="lg:flex-1">
               <button className="flex items-center justify-center gap-4 bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full lg:mt-0 hover:bg-orange-600
-            transition-all duration-200" >
+            transition-all duration-100" >
                 <AiOutlineShoppingCart /> Add to cart
               </button>
             </div>
